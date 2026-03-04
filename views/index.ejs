@@ -1,0 +1,229 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>JR Consultorias</title>
+  <link rel="icon" type="image/png" href="/images/logolight.png">
+  <script src="https://cdn.tailwindcss.com"></script>
+
+  <style>
+    @keyframes scroll {
+      from { transform: translateX(0); }
+      to { transform: translateX(-50%); }
+    }
+  </style>
+</head>
+
+
+
+
+<body class="bg-gray-100">
+
+ 
+<!-- Header - Barra de Navegação Acima na Home -->
+
+<nav class="bg-gray-900 text-white">
+  <div class="max-w-7xl mx-auto px-6 py-4 flex justify-between items-center">
+
+    <!-- LOGO + NOME -->
+    <div class="flex items-center gap-3">
+      <img src="/images/logosite.png"
+           alt="JR Consultorias"
+           class="h-10 w-auto">
+
+      <span class="text-xl font-semibold">
+        JR Consultorias
+      </span>
+
+    </div>
+
+    <!-- MENU -->
+    <div class="flex items-center gap-6">
+      <a href="#" class="hover:text-blue-400">Home</a>
+      <a href="/jr" class="hover:text-blue-400">Sobre JR</a>
+
+      <input type="text" placeholder="Search"
+        class="px-3 py-1 rounded text-black">
+    </div>
+
+  </div>
+</nav>
+
+
+<!-- BANNER CAROUSEL -->
+<section class="relative w-full overflow-hidden">
+
+  <!-- Slides -->
+  <div id="carousel" class="flex transition-transform duration-700 ease-in-out">
+
+    <div class="min-w-full relative">
+      <img src="/images/banner1.jpg" class="w-full h-[500px] object-cover">
+      <div class="absolute inset-0 bg-black/40 flex items-center justify-center">
+        <h2 class="text-white text-4xl font-bold">Oferta 1</h2>
+      </div>
+    </div>
+
+    <div class="min-w-full relative">
+      <img src="/images/banner2.jpg" class="w-full h-[500px] object-cover">
+      <div class="absolute inset-0 bg-black/40 flex items-center justify-center">
+        <h2 class="text-white text-4xl font-bold">Oferta 2</h2>
+      </div>
+    </div>
+
+    <div class="min-w-full relative">
+      <img src="/images/banner3.jpg" class="w-full h-[500px] object-cover">
+      <div class="absolute inset-0 bg-black/40 flex items-center justify-center">
+        <h2 class="text-white text-4xl font-bold">Oferta 3</h2>
+      </div>
+    </div>
+
+  </div>
+
+  <!-- Pontinhos -->
+  <div class="absolute bottom-6 left-1/2 -translate-x-1/2 flex gap-3">
+    <button class="dot w-3 h-3 rounded-full bg-white/50" onclick="goToSlide(0)"></button>
+    <button class="dot w-3 h-3 rounded-full bg-white/50" onclick="goToSlide(1)"></button>
+    <button class="dot w-3 h-3 rounded-full bg-white/50" onclick="goToSlide(2)"></button>
+  </div>
+
+</section>
+
+
+
+
+
+<!-- Cards da Home -->
+<section class="max-w-7xl mx-auto px-6 mt-12">
+  <h1 class="text-3xl font-bold text-center mb-10">
+    Produtos em Destaque
+  </h1>
+
+  <div class="grid md:grid-cols-3 gap-8">
+
+    <!-- CARD 1 -->
+    <div class="bg-white rounded-xl shadow-lg overflow-hidden flex flex-col">
+      <img src="/images/produto1.png"
+        class="h-64 w-full object-cover">
+
+      <div class="p-6 flex flex-col flex-grow">
+        <h2 class="text-xl font-semibold mb-3">
+          Palestra - Tecnologia para o Mundo Moderno
+        </h2>
+
+        <p class="text-gray-600 mb-6 flex-grow">
+          Portos autônomos, fábricas escuras, IA e robótica em escala inédita.
+          Como se posicionar diante dessas mudanças?
+        </p>
+
+        <button class="bg-blue-600 text-white py-2 rounded hover:bg-blue-700 transition">
+          Reservar Data
+        </button>
+      </div>
+    </div>
+
+    <!-- CARD 2 -->
+    <div class="bg-white rounded-xl shadow-lg overflow-hidden flex flex-col">
+      <img src="/images/produto2.png"
+        class="h-64 w-full object-cover">
+
+      <div class="p-6 flex flex-col flex-grow">
+        <h2 class="text-xl font-semibold mb-3">
+          Thuki bem doce
+        </h2>
+
+        <p class="text-gray-600 mb-6 flex-grow">
+          Aprenda boas práticas da informática corporativa,
+          gestão de arquivos e organização digital.
+        </p>
+
+        <button class="bg-blue-600 text-white py-2 rounded hover:bg-blue-700 transition">
+          Adquirir Curso
+        </button>
+      </div>
+    </div>
+
+    <!-- CARD 3 -->
+    <div class="bg-white rounded-xl shadow-lg overflow-hidden flex flex-col">
+      <img src="/images/produto3.png"
+        class="h-64 w-full object-cover">
+
+      <div class="p-6 flex flex-col flex-grow">
+        <h2 class="text-xl font-semibold mb-3">
+          Kit JR Consultoria
+        </h2>
+
+        <p class="text-gray-600 mb-6 flex-grow">
+          Material base para início da formação e estudos.
+        </p>
+
+        <button class="bg-blue-600 text-white py-2 rounded hover:bg-blue-700 transition">
+          Comprar
+        </button>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<!-- CLIENTES -->
+<section class="mt-16">
+  <h2 class="text-3xl font-bold text-center mb-8">
+    Nossos Clientes
+  </h2>
+
+  <div class="overflow-hidden bg-white py-8">
+    <div class="flex w-max animate-[scroll_20s_linear_infinite]">
+
+      <!-- Duplicado para efeito infinito -->
+      <% for(let i = 0; i < 4; i++) { %>
+
+        <img src="/images/itg.png" class="h-20 mx-10">
+        <img src="/images/mobit.png" class="h-20 mx-10">
+        <img src="/images/geosales.png" class="h-20 mx-10">
+        <img src="/images/schindler.png" class="h-20 mx-10">
+        <img src="/images/teclat.png" class="h-20 mx-10">
+
+      <% } %>
+
+    </div>
+  </div>
+</section>
+
+
+
+
+<script>
+  const carousel = document.getElementById("carousel");
+  const dots = document.querySelectorAll(".dot");
+  const totalSlides = dots.length;
+
+  let index = 0;
+
+  function updateCarousel() {
+    carousel.style.transform = `translateX(-${index * 100}%)`;
+
+    dots.forEach(dot => dot.classList.remove("bg-white"));
+    dots.forEach(dot => dot.classList.add("bg-white/50"));
+    dots[index].classList.remove("bg-white/50");
+    dots[index].classList.add("bg-white");
+  }
+
+  function goToSlide(i) {
+    index = i;
+    updateCarousel();
+  }
+
+  function nextSlide() {
+    index = (index + 1) % totalSlides;
+    updateCarousel();
+  }
+
+  setInterval(nextSlide, 5000);
+
+  updateCarousel();
+</script>
+
+
+</body>
+</html>
