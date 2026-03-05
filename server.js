@@ -13,6 +13,14 @@ app.get('/jr', (req, res) => {
   res.render('jr')
 })
 
+app.get("/produto", (req, res) => {
+  res.render("detail");
+});
+
+
+
+
+
 const PORT = process.env.PORT || 3000;
 
 app.listen(PORT, () => {

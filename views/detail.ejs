@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+<meta charset="UTF-8">
+<title>Produto</title>
+<script src="https://cdn.tailwindcss.com"></script>
+</head>
+
+<body>
+    
+<nav class="bg-gray-900 text-white">
+  <div class="max-w-7xl mx-auto px-6 py-4">
+    <a href="/" class="font-bold text-lg">Home</a>
+  </div>
+</nav>
+
+
+
+
+<section class="max-w-7xl mx-auto px-6 py-10">
+
+  <div class="grid md:grid-cols-2 gap-10">
+
+    <!-- GALERIA DE IMAGENS -->
+    <div>
+
+      <img id="mainImage"
+        src="/images/produto1.jpg"
+        class="rounded-lg shadow-lg w-full mb-4">
+
+      <div class="flex gap-3">
+
+        <img src="/images/produto1.jpg"
+        class="w-20 cursor-pointer border rounded hover:border-blue-500"
+        onclick="trocarImagem(this.src)">
+
+        <img src="/images/produto2.jpg"
+        class="w-20 cursor-pointer border rounded hover:border-blue-500"
+        onclick="trocarImagem(this.src)">
+
+        <img src="/images/produto3.jpg"
+        class="w-20 cursor-pointer border rounded hover:border-blue-500"
+        onclick="trocarImagem(this.src)">
+
+      </div>
+
+    </div>
+
+
+    <!-- DETALHES DO PRODUTO -->
+    <div class="flex flex-col gap-5">
+
+      <h1 class="text-3xl font-bold">
+        Produto Exemplo
+      </h1>
+
+      <h2 class="text-lg text-gray-500">
+        Subtítulo ou categoria do produto
+      </h2>
+
+      <!-- AVALIAÇÕES -->
+      <div class="flex items-center gap-2 text-yellow-400">
+        ⭐⭐⭐⭐⭐
+        <span class="text-gray-600 text-sm">(124 avaliações)</span>
+      </div>
+
+      <!-- PREÇO -->
+      <div class="text-3xl font-bold text-green-600">
+        R$ 199,90
+      </div>
+
+      <!-- DESCRIÇÃO -->
+      <p class="text-gray-700">
+        Descrição detalhada do produto. Aqui você pode explicar
+        características, materiais, benefícios e diferenciais.
+      </p>
+
+      <!-- QUANTIDADE -->
+      <div class="flex items-center gap-4">
+
+        <span>Quantidade</span>
+
+        <input
+        type="number"
+        value="1"
+        min="1"
+        class="w-20 border rounded px-2 py-1">
+
+      </div>
+
+
+      <!-- BOTÕES -->
+      <div class="flex gap-4 mt-4">
+
+        <button
+        class="bg-blue-600 hover:bg-blue-700 text-white px-6 py-3 rounded-lg">
+        🛒 Adicionar ao Carrinho
+        </button>
+
+        <button
+        class="bg-green-600 hover:bg-green-700 text-white px-6 py-3 rounded-lg">
+        ⚡ Comprar Agora
+        </button>
+
+      </div>
+
+
+      <!-- INFORMAÇÕES EXTRAS -->
+      <div class="border-t pt-4 mt-6 text-sm text-gray-600 space-y-2">
+
+        <div>🚚 Frete calculado no checkout</div>
+
+        <div>🔄 Troca garantida em até 7 dias</div>
+
+        <div>🔒 Pagamento 100% seguro</div>
+
+      </div>
+
+    </div>
+
+  </div>
+
+</section>
+<script>
+function trocarImagem(src){
+  document.getElementById("mainImage").src = src;
+}
+</script>
+
+</body>
+</html>
+
