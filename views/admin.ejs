@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+<meta charset="UTF-8">
+<title>Admin - Produtos</title>
+<script src="https://cdn.tailwindcss.com"></script>
+</head>
+
+<body class="bg-gray-100 p-10">
+
+<h1 class="text-3xl font-bold mb-8">Cadastrar Produto</h1>
+
+<form action="/salvar-produto" method="POST" class="bg-white p-6 rounded shadow max-w-xl" enctype="multipart/form-data">
+
+<div class="mb-4">
+<label class="block mb-1">Título</label>
+<input name="titulo" class="w-full border p-2 rounded">
+</div>
+
+<div class="mb-4">
+<label class="block mb-1">Subtítulo</label>
+<input name="subtitulo" class="w-full border p-2 rounded">
+</div>
+
+<div class="mb-4">
+<label class="block mb-1">Valor</label>
+<input name="valor" class="w-full border p-2 rounded">
+</div>
+
+<div class="mb-4">
+<label class="block mb-1">Descrição</label>
+<textarea name="descricao" class="w-full border p-2 rounded"></textarea>
+</div>
+
+<div class="mb-4">
+<label class="block mb-1">Imagem</label>
+<input type="file" name="imagem" placeholder="/images/produto.png" class="w-full border p-2 rounded">
+</div>
+
+<button class="bg-blue-600 text-white px-4 py-2 rounded hover:bg-blue-700">
+Salvar Produto
+</button>
+
+</form>
+
+</body>
+</html>

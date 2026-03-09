@@ -1,0 +1,26 @@
+[
+  {
+    "id": 1,
+    "titulo": "Curso Thuki",
+    "subtitulo": "Boas práticas de informática",
+    "valor": 197,
+    "descricao": "Curso completo para profissionais.",
+    "imagem": "/images/code.png"
+  },
+  {
+    "id": 1773058247317,
+    "titulo": "Teste 1",
+    "subtitulo": "Produto de teste",
+    "valor": "150,00",
+    "descricao": "Este é um produto",
+    "imagem": "/images/gabba.png"
+  },
+  {
+    "id": 1773060025538,
+    "titulo": "Teste 2",
+    "subtitulo": "Mais um teste",
+    "valor": "200",
+    "descricao": "Teste comum pra ver se está dando certo.",
+    "imagem": "/images/1773060025533.png"
+  }
+]

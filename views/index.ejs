@@ -181,72 +181,39 @@
     Produtos em Destaque
   </h1>
 
-  <div class="grid md:grid-cols-3 gap-8">
+ <div class="grid md:grid-cols-3 gap-8">  
 
-    <!-- CARD 1 -->
-    <div class="bg-white rounded-xl shadow-lg overflow-hidden flex flex-col">
-      <img src="/images/produto1.png"
-        class="h-64 w-full object-cover">
+<% produtos.forEach(function(produto) { %>
 
-      <div class="p-6 flex flex-col flex-grow">
-        <h2 class="text-xl font-semibold mb-3">
-          Palestra - Tecnologia para o Mundo Moderno
-        </h2>
+<div class="bg-white rounded-xl shadow-lg overflow-hidden flex flex-col">
 
-        <p class="text-gray-600 mb-6 flex-grow">
-          Portos autônomos, fábricas escuras, IA e robótica em escala inédita.
-          Como se posicionar diante dessas mudanças?
-        </p>
+  <img src="<%= produto.imagem %>"
+       class="h-64 w-full object-cover">
 
-       <a href="/produto" 
-   class="bg-blue-600 text-white py-2 rounded hover:bg-blue-700 transition text-center">
-  Reservar Data
-</a>
-      </div>
-    </div>
+  <div class="p-6 flex flex-col flex-grow">
 
-    <!-- CARD 2 -->
-    <div class="bg-white rounded-xl shadow-lg overflow-hidden flex flex-col">
-      <img src="/images/produto2.png"
-        class="h-64 w-full object-cover">
+    <h2 class="text-xl font-semibold mb-3">
+      <%= produto.titulo %>
+    </h2>
 
-      <div class="p-6 flex flex-col flex-grow">
-        <h2 class="text-xl font-semibold mb-3">
-          Assistir Aula On Line
-        </h2>
+    <p class="text-gray-600 mb-6 flex-grow">
+      <%= produto.subtitulo %>
+    </p>
 
-        <p class="text-gray-600 mb-6 flex-grow">
-          Aprenda boas práticas da informática corporativa,
-          gestão de arquivos e organização digital.
-        </p>
-
-        <button class="bg-blue-600 text-white py-2 rounded hover:bg-blue-700 transition">
-          Adquirir Curso
-        </button>
-      </div>
-    </div>
-
-    <!-- CARD 3 -->
-    <div class="bg-white rounded-xl shadow-lg overflow-hidden flex flex-col">
-      <img src="/images/produto3.png"
-        class="h-64 w-full object-cover">
-
-      <div class="p-6 flex flex-col flex-grow">
-        <h2 class="text-xl font-semibold mb-3">
-          Kit JR Consultoria
-        </h2>
-
-        <p class="text-gray-600 mb-6 flex-grow">
-          Material base para início da formação e estudos.
-        </p>
-
-        <button class="bg-blue-600 text-white py-2 rounded hover:bg-blue-700 transition">
-          Comprar
-        </button>
-      </div>
-    </div>
+    <a href="/produto/<%= produto.id %>"
+       class="bg-blue-600 text-white py-2 rounded hover:bg-blue-700 transition text-center">
+       Ver Detalhes
+    </a>
 
   </div>
+
+</div>
+
+<% }) %>
+
+</div>
+
+
 </section>
 
 <!-- CLIENTES -->
