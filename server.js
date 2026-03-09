@@ -63,9 +63,6 @@ app.get("/produto/:id", (req, res) => {
 
 // Salvar produto
 
-app.get("/admin", (req, res) => {
-  res.render("admin");
-});
 
 app.post("/salvar-produto", upload.single("imagem"), (req, res) => {
 
@@ -89,6 +86,71 @@ app.post("/salvar-produto", upload.single("imagem"), (req, res) => {
 
   res.redirect("/");
 });
+
+
+//carregar produtos
+
+app.get("/admin", (req, res) => {
+
+  const produtos = carregarProdutos()
+
+  res.render("admin", { produtos })
+
+})
+
+
+// excluir produtos
+
+app.get("/excluir/:id", (req, res) => {
+
+  const produtos = carregarProdutos()
+
+  const novosProdutos = produtos.filter(p => p.id != req.params.id)
+
+  fs.writeFileSync(
+    "./data/produtos.json",
+    JSON.stringify(novosProdutos, null, 2)
+  )
+
+  res.redirect("/admin")
+
+})
+
+// rota pra editar produtos
+
+app.get("/editar/:id", (req, res) => {
+
+  const produtos = carregarProdutos()
+
+  const produto = produtos.find(p => p.id == req.params.id)
+
+  res.render("editar", { produto })
+
+})
+
+// atualizar produtos
+
+app.post("/atualizar/:id", (req, res) => {
+
+  const produtos = carregarProdutos()
+
+  const index = produtos.findIndex(p => p.id == req.params.id)
+
+  produtos[index].titulo = req.body.titulo
+  produtos[index].subtitulo = req.body.subtitulo
+  produtos[index].valor = req.body.valor
+  produtos[index].descricao = req.body.descricao
+
+  fs.writeFileSync(
+    "./data/produtos.json",
+    JSON.stringify(produtos, null, 2)
+  )
+
+  res.redirect("/admin")
+
+})
+
+
 
 
 const PORT = process.env.PORT || 3000;

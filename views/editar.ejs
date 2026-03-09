@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Editar Produto</title>
+<script src="https://cdn.tailwindcss.com"></script>
+</head>
+
+<body class="p-10 bg-gray-100">
+
+<h1 class="text-3xl font-bold mb-6">Editar Produto</h1>
+
+<form action="/atualizar/<%= produto.id %>" method="POST" class="bg-white p-6 rounded shadow max-w-xl">
+
+<input type="hidden" name="id" value="<%= produto.id %>">
+
+<input name="titulo" value="<%= produto.titulo %>" class="w-full border p-2 mb-4">
+
+<input name="subtitulo" value="<%= produto.subtitulo %>" class="w-full border p-2 mb-4">
+
+<input name="valor" value="<%= produto.valor %>" class="w-full border p-2 mb-4">
+
+<textarea name="descricao" class="w-full border p-2 mb-4"><%= produto.descricao %></textarea>
+
+<button class="bg-blue-600 text-white px-4 py-2 rounded">
+Salvar Alterações
+</button>
+
+</form>
+
+</body>
+</html>

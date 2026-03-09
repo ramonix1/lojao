@@ -50,6 +50,62 @@ Salvar Produto
 
 </form>
 
+<!-- listar os produtos-->
+
+<h2 class="text-2xl font-bold mt-12 mb-6">Produtos cadastrados</h2>
+
+<table class="w-full bg-white rounded shadow">
+
+<thead class="bg-gray-200">
+<tr>
+<th class="p-3 text-left">Imagem</th>
+<th class="p-3 text-left">Título</th>
+<th class="p-3 text-left">Valor</th>
+<th class="p-3 text-left">Ações</th>
+</tr>
+</thead>
+
+<tbody>
+
+<% produtos.forEach(function(produto){ %>
+
+<tr class="border-t">
+
+<td class="p-3">
+<img src="<%= produto.imagem %>" class="h-12">
+</td>
+
+<td class="p-3">
+<%= produto.titulo %>
+</td>
+
+<td class="p-3">
+R$ <%= produto.valor %>
+</td>
+
+<td class="p-3">
+
+<a href="/editar/<%= produto.id %>"
+class="bg-yellow-500 text-white px-3 py-1 rounded">
+Editar
+</a>
+
+<a href="/excluir/<%= produto.id %>"
+class="bg-red-600 text-white px-3 py-1 rounded ml-2">
+Excluir
+</a>
+
+</td>
+
+</tr>
+
+<% }) %>
+
+</tbody>
+</table>
+
+
+
 <script>
 const inputImagem = document.getElementById("imagem");
 const preview = document.getElementById("preview");
