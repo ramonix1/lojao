@@ -33,15 +33,45 @@
 </div>
 
 <div class="mb-4">
-<label class="block mb-1">Imagem</label>
-<input type="file" name="imagem" placeholder="/images/produto.png" class="w-full border p-2 rounded">
+  <label class="block mb-1">Imagem</label>
+  <input 
+    type="file" 
+    name="imagem" 
+    id="imagem"
+    accept="image/*"
+    class="w-full border p-2 rounded">
 </div>
+
+<img id="preview" class="mt-4 max-h-48 rounded shadow hidden">
 
 <button class="bg-blue-600 text-white px-4 py-2 rounded hover:bg-blue-700">
 Salvar Produto
 </button>
 
 </form>
+
+<script>
+const inputImagem = document.getElementById("imagem");
+const preview = document.getElementById("preview");
+
+inputImagem.addEventListener("change", function(){
+
+  const file = this.files[0];
+
+  if(file){
+    const reader = new FileReader();
+
+    reader.onload = function(e){
+      preview.src = e.target.result;
+      preview.classList.remove("hidden");
+    }
+
+    reader.readAsDataURL(file);
+  }
+
+});
+</script>
+
 
 </body>
 </html>
