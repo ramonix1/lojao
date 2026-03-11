@@ -1,0 +1,23 @@
+<div class="bg-white shadow rounded p-4">
+
+<img
+src="<%= produto.imagem || '/images/sem-imagem.png' %>"
+class="w-full h-40 object-cover mb-3">
+
+<h2 class="text-lg font-bold">
+<%= produto.nome %>
+</h2>
+
+<p class="text-green-600 font-semibold">
+R$ <%= produto.valor %>
+</p>
+
+<a
+href="/produto/<%= produto.id %>"
+class="text-blue-600">
+
+Ver detalhes
+
+</a>
+
+</div>

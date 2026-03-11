@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+
+<meta charset="UTF-8">
+<title>Lojão</title>
+
+<link rel="stylesheet" href="/css/style.css">
+
+</head>
+
+<body>
+
+<%- include("../partials/header") %>
+
+
+<div class="container">
+
+    <!-- seus produtos aqui -->
+
+</div>
+
+
+<%- include("../partials/footer") %>
+
+</body>
+</html>
+
+
+<%- include("../layouts/header") %>
+
+<div class="grid grid-cols-4 gap-6">
+
+<% produtos.forEach(produto => { %>
+
+<%- include("../partials/produto-card",{produto}) %>
+
+<% }) %>
+
+</div>
+
+<%- include("../layouts/footer") %>
