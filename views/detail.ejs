@@ -1,143 +1,167 @@
 <!DOCTYPE html>
 <html lang="pt-br">
+
 <head>
 <meta charset="UTF-8">
-<title>Produto</title>
+<title><%= produto.nome %> - Lojão</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
 <script src="https://cdn.tailwindcss.com"></script>
+
 </head>
 
-<body>
-    
+<body class="bg-gray-100">
+
+<!-- NAVBAR -->
 <nav class="bg-gray-900 text-white">
-  <div class="max-w-7xl mx-auto px-6 py-4">
-    <a href="/" class="font-bold text-lg">Home</a>
+  <div class="max-w-7xl mx-auto px-6 py-4 flex justify-between items-center">
+    <a href="/" class="font-bold text-lg">🛒 Lojão</a>
+    <a href="/" class="hover:underline">Voltar para loja</a>
   </div>
 </nav>
 
 
 
-
+<!-- CONTEÚDO -->
 <section class="max-w-7xl mx-auto px-6 py-10">
 
-  <div class="grid md:grid-cols-2 gap-10">
-
-    <!-- GALERIA DE IMAGENS -->
-    <div>
-
-      <img id="mainImage"
-        src="/images/gabba.png"
-        class="rounded-lg shadow-lg w-full mb-4">
-
-      <div class="flex gap-3">
+<div class="grid md:grid-cols-2 gap-10 bg-white p-6 rounded-lg shadow">
 
 
-        <img src="/images/gabba.png"
-        class="w-20 cursor-pointer border rounded hover:border-blue-500"
+<!-- GALERIA DE IMAGENS -->
+<div>
+
+<img
+id="mainImage"
+src="<%= imagens.length ? imagens[0].url : '/images/sem-imagem.png' %>"
+class="rounded-lg shadow-lg w-full mb-4 object-cover">
+
+<div class="flex gap-3 flex-wrap">
+
+<% if(imagens.length){ %>
+
+    <% imagens.forEach(function(img){ %>
+
+        <img
+        src="<%= img.url %>"
+        class="w-20 h-20 object-cover cursor-pointer border rounded hover:border-blue-500 hover:scale-105 transition"
         onclick="trocarImagem(this.src)">
 
-        <img src="/images/picapau.png"
-        class="w-20 cursor-pointer border rounded hover:border-blue-500"
-        onclick="trocarImagem(this.src)">
+    <% }) %>
 
-        <img src="/images/vance.png"
-        class="w-20 cursor-pointer border rounded hover:border-blue-500"
-        onclick="trocarImagem(this.src)">
+<% } else { %>
 
-        <img src="/images/rest.png"
-        class="w-20 cursor-pointer border rounded hover:border-blue-500"
-        onclick="trocarImagem(this.src)">
+    <span class="text-gray-400 text-sm">Sem imagens adicionais</span>
 
-       
+<% } %>
 
-      </div>
+</div>
 
-    </div>
+</div>
 
 
-    <!-- DETALHES DO PRODUTO -->
-    <div class="flex flex-col gap-5">
 
-      <h1 class="text-3xl font-bold">
-        Produto Exemplo
-      </h1>
+<!-- DETALHES DO PRODUTO -->
+<div class="flex flex-col gap-5">
 
-      <h2 class="text-lg text-gray-500">
-        Subtítulo ou categoria do produto
-      </h2>
+<h1 class="text-3xl font-bold">
+<%= produto.nome %>
+</h1>
 
-      <!-- AVALIAÇÕES -->
-      <div class="flex items-center gap-2 text-yellow-400">
-        ⭐⭐⭐⭐⭐
-        <span class="text-gray-600 text-sm">(124 avaliações)</span>
-      </div>
-
-      <!-- PREÇO -->
-      <div class="text-3xl font-bold text-green-600">
-        R$ 199,90
-      </div>
-
-      <!-- DESCRIÇÃO -->
-      <p class="text-gray-700">
-        Descrição detalhada do produto. Aqui você pode explicar
-        características, materiais, benefícios e diferenciais.
-      </p>
-
-      <!-- QUANTIDADE -->
-      <div class="flex items-center gap-4">
-
-        <span>Quantidade</span>
-
-        <input
-        type="number"
-        value="1"
-        min="1"
-        class="w-20 border rounded px-2 py-1">
-
-      </div>
+<% if(produto.subtitulo){ %>
+<h2 class="text-lg text-gray-500">
+<%= produto.subtitulo %>
+</h2>
+<% } %>
 
 
-      <!-- BOTÕES -->
-      <div class="flex gap-4 mt-4">
-
-        <button
-        class="bg-blue-600 hover:bg-blue-700 text-white px-6 py-3 rounded-lg">
-        🛒 Adicionar ao Carrinho
-        </button>
-
-        <button
-        class="bg-green-600 hover:bg-green-700 text-white px-6 py-3 rounded-lg">
-        ⚡ Comprar Agora
-        </button>
-
-      </div>
+<!-- AVALIAÇÕES -->
+<div class="flex items-center gap-2 text-yellow-400">
+⭐⭐⭐⭐⭐
+<span class="text-gray-600 text-sm">(124 avaliações)</span>
+</div>
 
 
-      <!-- INFORMAÇÕES EXTRAS -->
-      <div class="border-t pt-4 mt-6 text-sm text-gray-600 space-y-2">
+<!-- PREÇO -->
+<div class="text-3xl font-bold text-green-600">
+R$ <%= Number(produto.valor).toFixed(2).replace('.', ',') %>
+</div>
 
-        <div>🚚 Frete calculado no checkout</div>
 
-        <div>🔄 Troca garantida em até 7 dias</div>
+<!-- DESCRIÇÃO -->
+<p class="text-gray-700 leading-relaxed">
+<%= produto.descricao %>
+</p>
 
-        <div>🔒 Pagamento 100% seguro</div>
 
-      </div>
+<!-- QUANTIDADE -->
+<div class="flex items-center gap-4">
 
-    </div>
+<span class="font-medium">Quantidade</span>
 
-        <button href="/" class="bg-blue-600 hover:bg-blue-700 text-white px-6 py-3 rounded-lg">
-          Voltar para Home
-        </button>
+<input
+type="number"
+value="1"
+min="1"
+class="w-20 border rounded px-2 py-1">
 
-  </div>
+</div>
+
+
+
+<!-- BOTÕES -->
+<div class="flex flex-wrap gap-4 mt-4">
+
+<button
+class="bg-blue-600 hover:bg-blue-700 text-white px-6 py-3 rounded-lg transition">
+🛒 Adicionar ao Carrinho
+</button>
+
+<button
+class="bg-green-600 hover:bg-green-700 text-white px-6 py-3 rounded-lg transition">
+⚡ Comprar Agora
+</button>
+
+<a
+href="/"
+class="bg-gray-300 hover:bg-gray-400 px-6 py-3 rounded-lg transition">
+← Voltar para Home
+</a>
+
+</div>
+
+
+
+<!-- INFORMAÇÕES EXTRAS -->
+<div class="border-t pt-4 mt-6 text-sm text-gray-600 space-y-2">
+
+<div>🚚 Frete calculado no checkout</div>
+
+<div>🔄 Troca garantida em até 7 dias</div>
+
+<div>🔒 Pagamento 100% seguro</div>
+
+</div>
+
+</div>
+
+</div>
 
 </section>
+
+
+
+<!-- SCRIPT GALERIA -->
 <script>
+
 function trocarImagem(src){
-  document.getElementById("mainImage").src = src;
+
+document.getElementById("mainImage").src = src;
+
 }
+
 </script>
+
 
 </body>
 </html>
-

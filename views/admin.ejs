@@ -45,11 +45,12 @@
                 <div class="mb-4">
                     <label class="block mb-1 font-semibold">Valor *</label>
                     <input 
-                        type="text" 
-                        name="valor" 
+                        type="text"
+                        name="valor"
+                        id="valor"
                         required
                         class="w-full border p-2 rounded focus:ring-2 focus:ring-blue-300"
-                        placeholder="Ex: 99.90 ou R$ 99,90">
+                        placeholder="R$ 0,00">
                 </div>
 
                 <div class="mb-4">
@@ -63,14 +64,18 @@
 
                 <div class="mb-4">
                     <label class="block mb-1 font-semibold">Imagem *</label>
-                    <input 
-                        type="file" 
-                        name="imagem" 
-                        id="imagem"
-                        accept="image/*"
-                        required
-                        class="w-full border p-2 rounded file:mr-4 file:py-2 file:px-4 file:rounded file:border-0 file:bg-blue-50 file:text-blue-700 hover:file:bg-blue-100">
-                    <p class="text-xs text-gray-500 mt-1">Formatos aceitos: JPG, PNG, GIF, WEBP (max. 5MB)</p>
+                   <input 
+                    type="file"
+                    name="imagens"
+                    id="imagens"
+                    multiple
+                    accept="image/*"
+                    required
+                    class="w-full border p-2 rounded file:mr-4 file:py-2 file:px-4 file:rounded file:border-0 file:bg-blue-50 file:text-blue-700 hover:file:bg-blue-100">
+
+                    <p class="text-xs text-gray-500 mt-1">
+                    Formatos aceitos: JPG, PNG, GIF, WEBP (máx. 5MB cada)
+                    </p>
                     
                     <!-- Preview da imagem -->
                     <img id="preview" class="mt-4 max-h-48 rounded shadow hidden">
@@ -178,19 +183,22 @@
         });
 
         // Formatar valor enquanto digita (opcional)
-        const valorInput = document.querySelector('input[name="valor"]');
-        if (valorInput) {
-            valorInput.addEventListener('blur', function() {
-                let valor = this.value.replace(/[^\d,.]/g, '');
-                if (valor) {
-                    // Se tiver ponto, mantém como está
-                    if (!valor.includes('.')) {
-                        valor = valor.replace(',', '.');
-                    }
-                    this.value = valor;
-                }
-            });
-        }
+        const valorInput = document.getElementById("valor");
+
+                valorInput.addEventListener("input", function(e) {
+
+                    let v = e.target.value.replace(/\D/g, "");
+
+                    v = (v / 100).toFixed(2) + "";
+
+                    v = v.replace(".", ",");
+
+                    v = v.replace(/\B(?=(\d{3})+(?!\d))/g, ".");
+
+                    e.target.value = "R$ " + v;
+
+                });
+    
     </script>
 
     <!-- Mensagens de feedback (opcional) -->

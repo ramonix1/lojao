@@ -1,31 +1,80 @@
 <!DOCTYPE html>
 <html>
 <head>
-<title>Editar Produto</title>
-<script src="https://cdn.tailwindcss.com"></script>
+    <title>Editar Produto</title>
+    <script src="https://cdn.tailwindcss.com"></script>
 </head>
-
 <body class="p-10 bg-gray-100">
 
-<h1 class="text-3xl font-bold mb-6">Editar Produto</h1>
+    <h1 class="text-3xl font-bold mb-6">Editar Produto</h1>
 
-<form action="/atualizar/<%= produto.id %>" method="POST" class="bg-white p-6 rounded shadow max-w-xl">
+    <form action="/atualizar/<%= produto.id %>" method="POST" enctype="multipart/form-data" class="bg-white p-6 rounded shadow max-w-xl">
+        
+        <input type="hidden" name="id" value="<%= produto.id %>">
 
-<input type="hidden" name="id" value="<%= produto.id %>">
+        <label class="block text-sm font-medium text-gray-700">Nome do Produto</label>
+        <input name="titulo" value="<%= produto.nome %>" class="w-full border p-2 mb-4" required>
 
-<input name="titulo" value="<%= produto.titulo %>" class="w-full border p-2 mb-4">
+        <label class="block text-sm font-medium text-gray-700">Subtítulo</label>
+        <input name="subtitulo" value="<%= produto.subtitulo %>" class="w-full border p-2 mb-4">
 
-<input name="subtitulo" value="<%= produto.subtitulo %>" class="w-full border p-2 mb-4">
+        <label class="block text-sm font-medium text-gray-700">Valor (R$)</label>
+        <input 
+                type="text"
+                name="valor"
+                id="valor"
+                required
+                value="R$ <%= Number(produto.valor).toFixed(2).replace('.', ',') %>"
+                class="w-full border p-2 rounded focus:ring-2 focus:ring-blue-300">
 
-<input name="valor" value="<%= produto.valor %>" class="w-full border p-2 mb-4">
+        <label class="block text-sm font-medium text-gray-700">Descrição</label>
+        <textarea name="descricao" class="w-full border p-2 mb-4" rows="4"><%= produto.descricao %></textarea>
 
-<textarea name="descricao" class="w-full border p-2 mb-4"><%= produto.descricao %></textarea>
+        <div class="mb-6">
+            <label class="block text-sm font-medium text-gray-700 mb-2">Imagem Atual</label>
+            <% if (produto.imagem) { %>
+                <img src="/images/<%= produto.imagem %>" class="h-32 w-auto mb-4 rounded border">
+            <% } %>
+            
+            <label class="block text-sm font-medium text-gray-700">Substituir Imagem (Opcional)</label>
+            <input type="file" name="imagem" class="w-full border p-2 bg-gray-50">
+            <p class="text-xs text-gray-500 mt-1">Deixe em branco para manter a imagem atual.</p>
+        </div>
 
-<button class="bg-blue-600 text-white px-4 py-2 rounded">
-Salvar Alterações
-</button>
+        <div class="flex gap-4">
+            <button class="bg-blue-600 hover:bg-blue-700 text-white px-6 py-2 rounded transition">
+                Salvar Alterações
+            </button>
+            <a href="/admin" class="bg-gray-500 hover:bg-gray-600 text-white px-6 py-2 rounded transition text-center">
+                Cancelar
+            </a>
+        </div>
+    </form>
 
-</form>
+<script>
+
+const valorInput = document.getElementById("valor");
+
+if (valorInput) {
+
+    valorInput.addEventListener("input", function(e) {
+
+        let v = e.target.value.replace(/\D/g, "");
+
+        v = (v / 100).toFixed(2);
+
+        v = v.replace(".", ",");
+
+        v = v.replace(/\B(?=(\d{3})+(?!\d))/g, ".");
+
+        e.target.value = "R$ " + v;
+
+    });
+
+}
+
+</script>
+
 
 </body>
 </html>
